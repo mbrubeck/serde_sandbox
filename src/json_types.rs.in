@@ -1,0 +1,22 @@
+use std::collections::HashSet;
+use std::hash::{BuildHasherDefault, Hash};
+use seahash::SeaHasher;
+
+type SeaHashSet<K> = HashSet<K, BuildHasherDefault<SeaHasher>>;
+
+
+#[derive(Debug)]
+#[derive(Serialize, Deserialize)]
+pub struct Point {
+    pub x: i32,
+    pub y: i32,
+}
+
+
+#[derive(Debug)]
+#[derive(Serialize, Deserialize)]
+pub struct Permission<T: Hash + Eq> {
+    pub domain: Option<T>,
+    pub actions: Option<SeaHashSet<T>>,
+    pub targets: Option<SeaHashSet<T>>
+}
