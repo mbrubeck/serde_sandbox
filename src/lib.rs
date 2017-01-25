@@ -11,3 +11,4 @@ extern crate seahash;
 
 
 pub mod json_types;
+pub mod permission;
